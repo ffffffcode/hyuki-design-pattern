@@ -1,12 +1,15 @@
 package iterator.sample;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class BookShelf implements Aggregate {
 
-    private Book[] books;
-    private int last;
+    private List<Book> books;
+//    private int last;
 
-    public BookShelf(int maxSize) {
-        this.books = new Book[maxSize];
+    public BookShelf() {
+        this.books = new ArrayList<>();
     }
 
     @Override
@@ -15,15 +18,17 @@ public class BookShelf implements Aggregate {
     }
 
     public Book getBookAt(int index) {
-        return books[index];
+        return books.get(index);
     }
 
     public int appendBook(Book book) {
-        books[last] = book;
-        return ++last;
+        books.add(book);
+//        return ++last;
+        return books.size();
     }
 
     public int getLength() {
-        return last;
+//        return last;
+        return books.size();
     }
 }
